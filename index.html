@@ -8,12 +8,12 @@
     :root {
       --accent: #0066ff;
       --accent2: #00d4ff;
-      --bg: #f4f7fb;
+      --bg: linear-gradient(120deg, #e0f0ff, #f4f7fb);
       --card: #ffffff;
       --text: #0b1220;
       --muted: #6b7280;
     }
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box}
     body {
       font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif;
       background: var(--bg);
@@ -22,146 +22,119 @@
       margin: 0;
       padding: 24px;
     }
-    .container {
-      max-width: 950px;
-      margin: auto;
-    }
+    .container { max-width: 960px; margin:auto; }
     header {
-      text-align: center;
-      padding: 24px 0;
-      background: linear-gradient(120deg, var(--accent), var(--accent2));
-      color: #fff;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align:center;
+      padding:24px 0;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff;
+      border-radius:20px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.2);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    header p {
-      margin-top: 8px;
-      font-size: 1.1rem;
-    }
-    .card {
+    header h1{margin:0;font-size:2rem}
+    header p{margin-top:8px;font-size:1.1rem}
+    .card{
       background: var(--card);
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      margin-top:20px;
+      padding:20px;
+      border-radius:16px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.05);
     }
-    h2 {
-      color: var(--accent);
-      margin-top: 0;
+    h2{color:var(--accent);margin-top:0}
+    a.btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      background:var(--accent);
+      color:#fff;
+      font-weight:600;
+      margin:6px 6px 6px 0;
+      transition:0.2s;
     }
-    a.btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      margin: 6px 6px 6px 0;
-      transition: 0.2s;
-    }
-    a.btn:hover { background: var(--accent2); }
-    ul.check {
-      list-style: none;
-      padding: 0;
-    }
-    ul.check li::before {
-      content: "✅ ";
-    }
-    ul.check li { margin: 10px 0; }
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
+    a.btn:hover{background:var(--accent2)}
+    .btn-whatsapp{background:#25D366}
+    .btn-whatsapp:hover{background:#1ebe5d}
+    .btn-social{background:#333;margin:4px}
+    ul.check{list-style:none;padding:0}
+    ul.check li::before{content:"✅ "}
+    ul.check li{margin:10px 0}
+    footer{text-align:center;margin-top:30px;color:var(--muted);font-size:0.9rem}
+    .card img{max-width:200px;border-radius:12px;display:block;margin:10px 0}
+    iframe{border:1px solid #ccc;border-radius:12px;width:100%;height:700px}
   </style>
 </head>
 <body>
-  <div class="container">
+<div class="container">
 
-    <header>
-      <h1>مقدمة إلى البرمجة بلغة C++</h1>
-      <p>دليلك الكامل للبداية الصحيحة في المادة 💪</p>
-    </header>
+<header>
+  <h1>مقدمة إلى البرمجة بلغة C++</h1>
+  <p>دليلك الكامل للبداية الصحيحة في المادة 💪</p>
+</header>
 
-    <section class="card">
-      <h2>📘 مقدمة عن لغة C++</h2>
-      <p>
-        لغة <strong>C++</strong> من أهم لغات البرمجة في العالم، وتُستخدم لتطوير الألعاب، البرامج، أنظمة التشغيل، وحتى تطبيقات الذكاء الاصطناعي.
-        هي لغة بتجمع بين <strong>السرعة والقوة</strong> تبعت الـ C، ومعها مرونة البرمجة الكائنية (OOP).
-      </p>
-      <p>
-        هدف المادة إنك تتعلم <strong>منطق البرمجة</strong> وكيف تحوّل أفكارك إلى أوامر يفهمها الكمبيوتر.  
-        ما تحفظ الأكواد، افهمها! 😉
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>🔗 الروابط المهمة</h2>
-      <a class="btn" href="https://drive.google.com/drive/folders/1EDPaKXCZpCkdUiIBzxCwR3IOjT6Vki4Y?usp=sharing" target="_blank">📂 Google Drive – كل الملفات والدوسيات</a><br>
-      <a class="btn" href="https://youtube.com/@start-coding-with-mohammad?si=8RnrdtIYraaQqvVZ" target="_blank">▶️ قناة اليوتيوب التعليمية</a><br>
-      <a class="btn" href="https://github.com/MohammadAzmiHamdan12/Quizzes-cpp" target="_blank">🧠 كويزات تفاعلية – GitHub</a><br>
-      <a class="btn" href="https://mohammadazmihamdan.github.io/cpp-html-demo/" target="_blank">🌐 الصفحة الرسمية – التحديثات والملاحظات</a>
-    </section>
-
-    <section class="card">
-      <h2>📅 خطة الأسبوع الأول</h2>
-      <ul class="check">
-        <li>( شاهد أول وحدتين من قائمة التشغيل على قناتي اليوتيوب ( خلال أسبوع.</li>
-        <li>حل الأمثلة وجرّب الأكواد بنفسك.</li>
-        <li>راجع الدوسية بعد كل حصة لتثبيت الفهم.</li>
-        <li>اسأل بأي جزئية مش واضحة داخل مجموعات الكورس.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>💡 نصائح عامة</h2>
-      <ul class="check">
-        <li>ابدأ بالشرح الأساسي قبل ما تنتقل للتمارين الصعبة.</li>
-        <li>الغلط جزء من التعلم، لا تخاف تغلط بالكود.</li>
-        <li>شارك أسئلتك بالنقاشات — الكل بيتعلم من بعض.</li>
-      </ul>
-    </section>
 <section class="card">
-  <h2>بعض من  اراء طلاب البطاقة و من اراء الطلاب على الشرح و مراجعات اليوتيوب 
-
-صيفي 2025</h2>
-  <p>يمكنك تصفح الملف مباشرة من هنا:</p>
-  <iframe 
-    src="صيفي%202025.pdf" 
-    width="100%" 
-    height="700px" 
-    style="border:1px solid #ccc; border-radius:12px;">
-  </iframe>
-  <p style="margin-top:10px;">
-    أو <a href="صيفي%202025.pdf" target="_blank" style="color:var(--accent); font-weight:600;">
-    اضغط هنا لتحميل الملف
-    </a>
-  </p>
+  <h2>📘 مقدمة عن لغة C++</h2>
+  <p>لغة <strong>C++</strong> من أهم لغات البرمجة في العالم، تُستخدم لتطوير الألعاب، البرامج، أنظمة التشغيل، وحتى تطبيقات الذكاء الاصطناعي. تجمع بين <strong>السرعة والقوة</strong> ومعها مرونة البرمجة الكائنية (OOP).</p>
+  <p>هدف المادة هو تعلم <strong>منطق البرمجة</strong> وتحويل الأفكار إلى أوامر يفهمها الكمبيوتر. ما تحفظ الأكواد، افهمها! 😉</p>
 </section>
 
-    <section class="card">
-      <h2>🎓 بطاقة C++ التعليمية</h2>
-      <p>
-        أقوى بطاقة تعليمية لمادة C++ – شرح شامل، مراجعات، وكويزات.  
-        متاحة حالياً بسعر <strong>10 دنانير</strong> فقط لفترة محدودة.  
-        <br>أي طالب غير مقتدر يتواصل معي ويبشر بأحلى بطاقة ❤️
-      </p>
-    </section>
+<section class="card">
+  <h2>🔗 الروابط المهمة</h2>
+  <a class="btn" href="https://drive.google.com/drive/folders/1EDPaKXCZpCkdUiIBzxCwR3IOjT6Vki4Y?usp=sharing" target="_blank">📂 Google Drive</a>
+  <a class="btn" href="https://youtube.com/@start-coding-with-mohammad?si=8RnrdtIYraaQqvVZ" target="_blank">▶️ قناة يوتيوب</a>
+  <a class="btn" href="https://github.com/MohammadAzmiHamdan12/Quizzes-cpp" target="_blank">🧠 GitHub الكويزات</a>
+  <a class="btn" href="https://nonerdsapp.com/course?id=49" target="_blank">🎓 البطاقة التعليمية</a>
+  <a class="btn" href="https://chat.whatsapp.com/CaHQT1ooPCRBKv4LR0NhEr" target="_blank">💬 مجموعة واتساب</a>
+</section>
 
-    <footer>
-      بإشراف <strong>محمد عزمي حمدان</strong> – 0788592929  
-      <br>© 2025 Start Coding With Mohammad
-    </footer>
-  </div>
+<section class="card">
+  <h2>📅 خطة الأسبوع الأول</h2>
+  <ul class="check">
+    <li>شاهد أول وحدتين من البلاي ليست خلال أسبوع.</li>
+    <li>حل الأمثلة وجرّب الأكواد بنفسك.</li>
+    <li>راجع الدوسية بعد كل حصة لتثبيت الفهم.</li>
+    <li>اسأل أي جزئية مش واضحة داخل مجموعات الكورس.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>💡 نصائح عامة</h2>
+  <ul class="check">
+    <li>ابدأ بالشرح الأساسي قبل الانتقال للتمارين الصعبة.</li>
+    <li>الغلط جزء من التعلم، لا تخاف تغلط بالكود.</li>
+    <li>شارك أسئلتك بالنقاشات — الكل بيتعلم من بعض.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>📄 ملف الدوسية – صيفي 2025</h2>
+  <p>يمكنك تصفح الملف مباشرة:</p>
+  <iframe src="صيفي%202025.pdf"></iframe>
+  <p style="margin-top:10px;">أو <a href="صيفي%202025.pdf" target="_blank" style="color:var(--accent); font-weight:600;">اضغط هنا لتحميل الملف</a></p>
+</section>
+
+<section class="card">
+  <h2>🎓 بطاقة C++ التعليمية</h2>
+  <img src="Screenshot 2025-10-09 014751.png" alt="بطاقتي التعليمية">
+  <p>أقوى بطاقة تعليمية لمادة C++ – شرح شامل، مراجعات، وكويزات.</p>
+  <p>متاحة حالياً بسعر <strong>10 دنانير</strong> لفترة محدودة.  
+     أي طالب غير مقتدر يتواصل معي ويبشر بأحلى بطاقة ❤️</p>
+  <a class="btn btn-whatsapp" href="https://wa.me/0788592929" target="_blank">📱 تواصل معي على واتساب</a>
+</section>
+
+<section class="card">
+  <h2>📱 حساباتي ومتابعتي</h2>
+  <p>هاي حساباتي إذا حبيتوا تدعموني أو تتابعوني:</p>
+  <a class="btn btn-social" href="https://www.linkedin.com/in/mohammad-hamdan-0b7b6b30a" target="_blank">🔗 LinkedIn</a>
+  <a class="btn btn-social" href="https://github.com/MohammadAzmiHamdan" target="_blank">🐙 GitHub</a>
+  <p>ويا ريت كل واحد عنده LinkedIn أو GitHub أو أي بورتفوليو يشارك الروابط على جروب المادة 💪🔥</p>
+</section>
+
+<footer>
+  بإشراف <strong>محمد عزمي حمدان</strong> – 0788592929  
+  <br>© 2025 Start Coding With Mohammad
+</footer>
+
+</div>
 </body>
 </html>
-
-
-
-
