@@ -4,20 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>مقدمة إلى البرمجة بلغة C++</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap');
-
-/* ألوان وفخامة */
 :root{
-  --accent1:#00aaff;
-  --accent2:#00ffaa;
+  --accent1:#00ffff;
+  --accent2:#00aaff;
   --dark-bg:#0b0b0b;
   --text:#f0f0f0;
   --muted:#9e9e9e;
   --card-radius:20px;
 }
 
-/* reset */
+/* Reset */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Noto Sans Arabic', Tahoma, Arial, sans-serif;
@@ -29,65 +27,95 @@ body{
   padding:20px;
 }
 
-/* خلفية ديناميكية متدرجة */
+/* Background Gradient Dynamic */
 body::before{
   content:"";
   position:fixed;
   top:0; left:0;
   width:100%; height:100%;
-  background: linear-gradient(220deg, #001f3f, #004d66, #001f3f);
+  background: linear-gradient(220deg,#001f3f,#004d66,#001f3f);
   background-size:400% 400%;
-  z-index:-2;
+  z-index:-3;
   animation: gradientBG 30s ease infinite;
-  filter: brightness(0.3);
+  filter: brightness(0.35);
 }
-
 @keyframes gradientBG{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
 
-/* Matrix الباهت */
+/* Canvas Matrix */
 canvas#matrix{
   position:fixed; top:0; left:0;
   width:100%; height:100%;
-  z-index:-1;
-  opacity:1.00;
+  z-index:-2;
+  opacity:0.17;
 }
 
-.container{max-width:960px;margin:auto;position:relative;z-index:1;}
+/* Particles Overlay */
+#particles-js{
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  z-index:-1;
+  pointer-events:none;
+  opacity:0.3;
+}
 
+.container{max-width:980px;margin:auto;position:relative;z-index:1;}
+
+/* Header */
 header{
   text-align:center;
-  padding:50px 20px;
+  padding:60px 20px;
   background: linear-gradient(135deg,var(--accent1),var(--accent2));
   border-radius: var(--card-radius);
-  box-shadow:0 12px 40px rgba(0,0,0,0.6);
+  box-shadow:0 15px 45px rgba(0,0,0,0.6);
   color:#fff;
 }
-header h1{font-size:2.8rem; text-shadow:2px 2px 15px rgba(0,0,0,0.4);}
-header p{font-size:1.3rem; margin-top:8px;}
+header h1{
+  font-size:3rem; 
+  text-shadow:2px 2px 20px rgba(0,0,0,0.5);
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+@keyframes textGlow{
+  0%{text-shadow:0 0 10px var(--accent1);}
+  100%{text-shadow:0 0 25px var(--accent2);}
+}
+header p{font-size:1.3rem; margin-top:12px;}
 
-/* البطاقة والقسم */
+/* Cards */
 .card{
   margin-top:25px;
-  padding:28px;
+  padding:30px;
   border-radius: var(--card-radius);
   backdrop-filter: blur(12px);
-  background: rgba(30,30,30,0.8);
-  box-shadow:0 12px 35px rgba(0,0,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(30,30,30,0.85);
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  transition: transform 0.4s, box-shadow 0.4s;
 }
-.card:hover{transform:translateY(-6px); box-shadow:0 18px 45px rgba(0,0,0,0.6);}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(0,255,255,0.4);
+}
+h2{
+  color:var(--accent1);
+  margin-bottom:15px;
+  text-shadow:1px 1px 8px rgba(0,0,0,0.5);
+  font-size:1.8rem;
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-h2{color:var(--accent1); margin-bottom:15px; text-shadow:1px 1px 5px rgba(0,0,0,0.4);}
-
-/* أزرار */
+/* Buttons */
 a.btn{
   display:inline-block;
-  padding:14px 22px;
-  border-radius:16px;
+  padding:14px 24px;
+  border-radius:18px;
   text-decoration:none;
   background: linear-gradient(120deg,var(--accent1),var(--accent2));
   color:#fff;
@@ -95,73 +123,81 @@ a.btn{
   margin:8px 6px;
   transition:0.3s all;
 }
-a.btn:hover{transform:scale(1.07); box-shadow:0 10px 25px rgba(0,255,200,0.5);}
+a.btn:hover{
+  transform:scale(1.1); 
+  box-shadow:0 15px 40px rgba(0,255,200,0.6);
+}
 
-/* خطوات المهمة */
+/* Steps */
 .steps{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  margin-top:12px;
+  gap:25px;
+  margin-top:15px;
 }
 .step{
-  padding:18px;
-  border-radius:16px;
+  padding:22px;
+  border-radius:18px;
   background: linear-gradient(180deg,#111,#222);
   border:1px solid rgba(255,255,255,0.05);
   text-align:center;
-  transition:0.3s transform,0.3s box-shadow;
+  transition:0.4s transform,0.4s box-shadow;
 }
-.step:hover{transform:translateY(-6px);box-shadow:0 12px 35px rgba(0,0,0,0.6);}
-.step strong{display:block; font-size:1.4rem; margin-bottom:8px; color: var(--accent2);}
-.muted{color:var(--muted);}
+.step:hover{transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,255,200,0.5);}
+.step strong{display:block; font-size:1.5rem; margin-bottom:10px; color: var(--accent2);}
+.muted{color:var(--muted); font-size:1.05rem;}
 
-/* قائمة تحقق */
-ul.check{list-style:none;}
+/* Checklist */
+ul.check{list-style:none; margin-top:12px;}
 ul.check li::before{content:"✅ ";}
-ul.check li{margin:12px 0; font-size:1.05rem;}
+ul.check li{margin:14px 0; font-size:1.1rem;}
 
-/* PDF والوسائط */
+/* PDF */
 iframe.pdf-viewer{
   width:100%;
-  height:720px;
-  border-radius:16px;
-  margin-top:12px;
+  height:750px;
+  border-radius:18px;
+  margin-top:15px;
   border:2px solid var(--accent1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-iframe.pdf-viewer:hover{transform:scale(1.02); box-shadow:0 15px 35px rgba(0,255,200,0.5);}
+iframe.pdf-viewer:hover{transform:scale(1.03); box-shadow:0 20px 60px rgba(0,255,200,0.5);}
 
+/* Images */
 .card img{
   max-width:100%;
-  border-radius:16px;
-  margin:12px 0;
-  box-shadow:0 15px 40px rgba(0,255,200,0.4);
-  transition:transform 0.3s,box-shadow 0.3s;
+  border-radius:18px;
+  margin:15px 0;
+  box-shadow:0 20px 60px rgba(0,255,200,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.card img:hover{transform:scale(1.03);}
+.card img:hover{transform:scale(1.04);}
 
-/* وسائل التواصل */
-.social a{margin:0 12px;color: var(--accent1); text-decoration:none;font-weight:700;transition:0.3s;}
+/* Social */
+.social a{margin:0 14px;color: var(--accent1); text-decoration:none;font-weight:700;transition:0.3s;}
 .social a:hover{color: var(--accent2);}
 .whatsapp-btn{
   display:inline-block;
   background:#25D366;
   color:#fff;
-  padding:14px 22px;
-  border-radius:16px;
+  padding:14px 24px;
+  border-radius:18px;
   text-decoration:none;
   font-weight:700;
-  margin-top:12px;
+  margin-top:15px;
   transition:0.3s transform,0.3s background;
 }
-.whatsapp-btn:hover{background:#1DA851; transform:scale(1.05);}
+.whatsapp-btn:hover{background:#1DA851; transform:scale(1.08);}
 
 /* Footer */
-footer{text-align:center;margin-top:40px;color:var(--muted);font-size:0.9rem;}
+footer{text-align:center;margin-top:50px;color:var(--muted);font-size:0.9rem;}
+/* Scrollbar */
+::-webkit-scrollbar{width:12px;}
+::-webkit-scrollbar-thumb{background:var(--accent2); border-radius:6px;}
+::-webkit-scrollbar-track{background:#111; border-radius:6px;}
 
 @media(max-width:520px){
-  header h1{font-size:2rem;}
+  header h1{font-size:2.2rem;}
   header p{font-size:1rem;}
   .steps{grid-template-columns:1fr;}
 }
@@ -169,7 +205,10 @@ footer{text-align:center;margin-top:40px;color:var(--muted);font-size:0.9rem;}
 </head>
 <body>
 
+<!-- Canvas Matrix -->
 <canvas id="matrix"></canvas>
+<!-- Particles Overlay -->
+<div id="particles-js"></div>
 
 <div class="container">
 
@@ -246,21 +285,21 @@ footer{text-align:center;margin-top:40px;color:var(--muted);font-size:0.9rem;}
 
 </div>
 
+<!-- Matrix Script -->
 <script>
-// Matrix Animation
 const canvas=document.getElementById('matrix');
 const ctx=canvas.getContext('2d');
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 const letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
-const fontSize=14;
+const fontSize=16;
 const columns=canvas.width/fontSize;
 const drops=[];
 for(let x=0;x<columns;x++)drops[x]=Math.random()*canvas.height;
-function draw(){
+function drawMatrix(){
   ctx.fillStyle='rgba(0,0,0,0.05)';
   ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle='rgba(0,255,180,0.15)';
+  ctx.fillStyle='rgba(0,255,255,0.15)';
   ctx.font=fontSize+'px monospace';
   for(let i=0;i<drops.length;i++){
     const text=letters.charAt(Math.floor(Math.random()*letters.length));
@@ -269,10 +308,26 @@ function draw(){
     if(drops[i]>canvas.height && Math.random()>0.975)drops[i]=0;
   }
 }
-setInterval(draw,50);
+setInterval(drawMatrix,50);
 window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+</script>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": {"value":80,"density":{"enable":true,"value_area":800}},
+    "color":{"value":"#00ffff"},
+    "shape":{"type":"circle","stroke":{"width":0,"color":"#000"}},
+    "opacity":{"value":0.3,"random":true},
+    "size":{"value":3,"random":true},
+    "line_linked":{"enable":true,"distance":120,"color":"#00ffff","opacity":0.2,"width":1},
+    "move":{"enable":true,"speed":2,"direction":"none","random":true,"straight":false,"out_mode":"out"}
+  },
+  "interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"}}}
+});
 </script>
 
 </body>
 </html>
-
