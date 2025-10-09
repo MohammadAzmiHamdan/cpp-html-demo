@@ -75,16 +75,25 @@ header{
 }
 header h1{
   font-size:3rem; 
-  text-shadow:2px 2px 20px rgba(0,0,0,0.5);
-  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  text-shadow:2px 2px 15px rgba(0,0,0,0.6); /* ظل أسود فخم */
+  background: linear-gradient(90deg, #000000, #222222, #444444); /* تدرج أسود متدرج */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textGlow 2s ease-in-out infinite alternate;
 }
+
 @keyframes textGlow{
-  0%{text-shadow:0 0 10px var(--accent1);}
-  100%{text-shadow:0 0 25px var(--accent2);}
+  0%{
+    text-shadow: 0 0 10px #111111, 0 0 15px #222222;
+  }
+  50%{
+    text-shadow: 0 0 20px #111111, 0 0 25px #222222, 0 0 30px #444444;
+  }
+  100%{
+    text-shadow: 0 0 15px #111111, 0 0 20px #222222, 0 0 25px #444444;
+  }
 }
+
 header p{font-size:1.3rem; margin-top:12px;}
 
 /* Cards */
@@ -331,3 +340,4 @@ particlesJS("particles-js", {
 
 </body>
 </html>
+
