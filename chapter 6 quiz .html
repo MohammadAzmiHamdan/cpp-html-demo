@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Programming Quiz Step by Step</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 700px;
+        margin: auto;
+    }
+    .question {
+        background: #f9f9f9;
+        padding: 15px;
+        margin-bottom: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px #ddd;
+    }
+    select, input {
+        padding: 6px;
+        margin: 5px 0;
+        width: 100%;
+        max-width: 400px;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+    .correct {
+        background-color: #c8f7c5;
+    }
+    .incorrect {
+        background-color: #f7c5c5;
+    }
+    .result {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 30px;
+        padding: 10px;
+        border-radius: 6px;
+        background-color: #e0e0e0;
+        max-width: 400px;
+    }
+    h1 {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<h1>Programming Quiz: Step by Step</h1>
+<p>For the following C++ code snippet, select the correct output or answer at each step.</p>
+
+<div class="question">
+    <p><b>Code snippet (simplified):</b></p>
+    <pre>
+int numA = 3, numB = 1;
+
+cout << numA << endl;     // Step 1: Output?
+cout << numB << endl;     // Step 2: Output?
+
+numB = 8;
+
+{
+    cout << numB << endl; // Step 3: Output?
+}
+    </pre>
+
+    <label for="step1">Step 1 - What is the output of <code>cout << numA << endl;</code>?</label>
+    <select id="step1">
+        <option value="">-- Select Output --</option>
+        <option value="1">1</option>
+        <option value="3">3</option>
+        <option value="8">8</option>
+        <option value="0">0</option>
+    </select>
+
+    <label for="step2">Step 2 - What is the output of <code>cout << numB << endl;</code>?</label>
+    <select id="step2">
+        <option value="">-- Select Output --</option>
+        <option value="1">1</option>
+        <option value="3">3</option>
+        <option value="8">8</option>
+        <option value="0">0</option>
+    </select>
+
+    <label for="step3">Step 3 - What is the output of <code>cout << numB << endl;</code> inside the block?</label>
+    <select id="step3">
+        <option value="">-- Select Output --</option>
+        <option value="1">1</option>
+        <option value="3">3</option>
+        <option value="8">8</option>
+        <option value="0">0</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Function Overloading Question:</b></p>
+    <p>Given the overloaded functions below, which version will be called by:</p>
+    <pre>callFunction(numB, numA++, 3);</pre>
+
+    <pre>
+void callFunction(int val1, int val2 = 5, int &val3 = someVar);
+void callFunction(int &val1, int val2 = 5, int val3 = 10);
+void callFunction(int val1 = 15, int &val2 = someVar, int val3 = 10);
+void callFunction(int &val1 = someVar, int val2 = 5, int val3 = 10);
+    </pre>
+
+    <label for="step4">Which function version is called?</label>
+    <select id="step4">
+        <option value="">-- Select function version --</option>
+        <option value="ver1">void callFunction(int val1, int val2 = 5, int &val3 = someVar);</option>
+        <option value="ver2">void callFunction(int &val1, int val2 = 5, int val3 = 10);</option>
+        <option value="ver3">void callFunction(int val1 = 15, int &val2 = someVar, int val3 = 10);</option>
+        <option value="ver4">void callFunction(int &val1 = someVar, int val2 = 5, int val3 = 10);</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Final Output of the Program:</b></p>
+    <label for="step5">Write the exact final output of the program (use \n for new lines):</label>
+    <input type="text" id="step5" placeholder="E.g. 1\nsomething\n...">
+</div>
+
+<button onclick="checkAnswers()">Check Answers</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function checkAnswers() {
+  
+    const correctAnswers = {
+        step1: "3",
+        step2: "1",
+        step3: "8",
+        step4: "ver2",
+        step5: "1\nsomething\n..."
+    };
+
+    let score = 0;
+    let total = Object.keys(correctAnswers).length;
+
+    for (const key in correctAnswers) {
+        let el = document.getElementById(key);
+        if (!el) continue;
+        let userAnswer = el.value.trim();
+        let correct = correctAnswers[key];
+        if(userAnswer === correct) {
+            el.classList.remove("incorrect");
+            el.classList.add("correct");
+            score++;
+        } else {
+            el.classList.remove("correct");
+            el.classList.add("incorrect");
+        }
+    }
+
+    document.getElementById("result").innerText = `Your score: ${score} / ${total}`;
+}
+</script>
+
+</body>
+</html>

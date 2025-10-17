@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Functions and Variables Quiz (30 Questions)</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+        background: #fafafa;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .question {
+        background: white;
+        padding: 15px 20px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px #ddd;
+    }
+    label {
+        font-weight: bold;
+        margin-top: 8px;
+        display: block;
+    }
+    select {
+        margin-top: 5px;
+        padding: 6px;
+        width: 100%;
+        max-width: 500px;
+    }
+    button {
+        display: block;
+        margin: 25px auto;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        background-color: #007BFF;
+        border: none;
+        color: white;
+        border-radius: 5px;
+    }
+    .correct {
+        background-color: #c8f7c5 !important;
+    }
+    .incorrect {
+        background-color: #f7c5c5 !important;
+    }
+    #result {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin-top: 30px;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #e0e0e0;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    pre {
+        background: #eee;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+</style>
+</head>
+<body>
+
+<h1>Quiz: Functions, Variables & Pointers (30 Questions)</h1>
+<p>Select the correct answer from each dropdown below.</p>
+
+<!-- Questions 1 to 20 (Theory) -->
+
+<div class="question">
+    <p><b>Q1:</b> What is a prototype of a function?</p>
+    <label for="q1">Choose the best description:</label>
+    <select id="q1">
+        <option value="">-- Select an answer --</option>
+        <option value="b">A declaration of a function specifying its name, return type, and parameters without the body.</option>
+        <option value="a">A complete function implementation including the body.</option>
+        <option value="c">A special function called automatically at program start.</option>
+        <option value="d">A function that calls itself recursively.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q2:</b> Which of the following is true about user-defined functions in C++?</p>
+    <label for="q2">Select one:</label>
+    <select id="q2">
+        <option value="">-- Select an answer --</option>
+        <option value="b">They must have a return type, a name, and optionally parameters.</option>
+        <option value="a">They can only return int values.</option>
+        <option value="c">They cannot accept parameters.</option>
+        <option value="d">They do not require a function body.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q3:</b> What is the default value of a function parameter useful for?</p>
+    <label for="q3">Choose the correct purpose:</label>
+    <select id="q3">
+        <option value="">-- Select an answer --</option>
+        <option value="a">To assign a value only if the caller does not provide one.</option>
+        <option value="b">To make a parameter optional at compile time.</option>
+        <option value="c">To force the caller to provide that parameter.</option>
+        <option value="d">To initialize global variables.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q4:</b> How does call by reference differ from call by value?</p>
+    <label for="q4">Select the true statement:</label>
+    <select id="q4">
+        <option value="">-- Select an answer --</option>
+        <option value="b">Call by reference passes the address of the argument allowing the function to modify it.</option>
+        <option value="a">Call by reference passes the value of the argument.</option>
+        <option value="c">Call by reference passes a copy and cannot modify the original variable.</option>
+        <option value="d">Call by reference is slower than call by value because it makes copies.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q5:</b> Which of these is a valid way to declare an overloaded function?</p>
+    <label for="q5">Choose the correct answer:</label>
+    <select id="q5">
+        <option value="">-- Select an answer --</option>
+        <option value="a">void print(int a); void print(int a, int b);</option>
+        <option value="b">void print(int a); int print(int a);</option>
+        <option value="c">void print(int a); void print(int a);</option>
+        <option value="d">void print(); void print();</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q6:</b> Which statement about local and global variables is correct?</p>
+    <label for="q6">Select one:</label>
+    <select id="q6">
+        <option value="">-- Select an answer --</option>
+        <option value="c">Local variables are declared inside functions and have limited scope.</option>
+        <option value="a">Local variables exist for the entire program runtime.</option>
+        <option value="b">Global variables are declared inside functions.</option>
+        <option value="d">Global variables cannot be accessed from other functions.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q7:</b> What will happen if you declare a variable as static inside a function?</p>
+    <label for="q7">Choose the correct effect:</label>
+    <select id="q7">
+        <option value="">-- Select an answer --</option>
+        <option value="b">The variable keeps its value between function calls.</option>
+        <option value="a">The variable is recreated each time the function is called.</option>
+        <option value="c">The variable can only be used globally.</option>
+        <option value="d">The variable is only accessible outside the function.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q8:</b> Which of these statements about function scope is true?</p>
+    <label for="q8">Select one:</label>
+    <select id="q8">
+        <option value="">-- Select an answer --</option>
+        <option value="b">Variables declared inside a function are accessible only within that function.</option>
+        <option value="a">Variables declared inside a function are accessible globally.</option>
+        <option value="c">All variables in C++ have global scope.</option>
+        <option value="d">Local variables are stored in heap memory.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q9:</b> Which of the following is a correct function prototype?</p>
+    <label for="q9">Select one:</label>
+    <select id="q9">
+        <option value="">-- Select an answer --</option>
+        <option value="a">int computeSum(int x, int y);</option>
+        <option value="b">int computeSum { int x, int y };</option>
+        <option value="c">computeSum(int x, int y);</option>
+        <option value="d">int computeSum(int x, int y) { return x + y; }</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q10:</b> Given the function: <code>void updateValue(int *ptr);</code>, what is the type of parameter <code>ptr</code>?</p>
+    <label for="q10">Choose the correct answer:</label>
+    <select id="q10">
+        <option value="">-- Select an answer --</option>
+        <option value="a">A pointer to an integer</option>
+        <option value="b">An integer value</option>
+        <option value="c">A reference to an integer</option>
+        <option value="d">A boolean value</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q11:</b> What is the output of the following code?</p>
+    <pre>
+void foo() {
+    static int count = 0;
+    count++;
+    cout &lt;&lt; count &lt;&lt; endl;
+}
+
+int main() {
+    foo();
+    foo();
+    foo();
+    return 0;
+}
+    </pre>
+    <label for="q11">Select the output sequence:</label>
+    <select id="q11">
+        <option value="">-- Select an answer --</option>
+        <option value="b">1 2 3</option>
+        <option value="a">1 1 1</option>
+        <option value="c">0 0 0</option>
+        <option value="d">Compilation error</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q12:</b> What happens if you omit the function prototype before the function definition?</p>
+    <label for="q12">Choose the correct statement:</label>
+    <select id="q12">
+        <option value="">-- Select an answer --</option>
+        <option value="b">It causes a compilation error if the function is called before its definition.</option>
+        <option value="a">The program compiles without problems.</option>
+        <option value="c">It causes a runtime error.</option>
+        <option value="d">The prototype is not required in any case.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q13:</b> How do you call a function by passing a variable by reference?</p>
+    <label for="q13">Select the correct statement:</label>
+    <select id="q13">
+        <option value="">-- Select an answer --</option>
+        <option value="a">Define the function parameter as int &amp;var and call the function with the variable name.</option>
+        <option value="b">Define the function parameter as int var and call the function with &amp;variable.</option>
+        <option value="c">Define the function parameter as int* var and call the function with the variable name.</option>
+        <option value="d">Define the function parameter as int var and call the function with variable.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q14:</b> Which of the following is NOT a valid way to declare a function?</p>
+    <label for="q14">Select one:</label>
+    <select id="q14">
+        <option value="">-- Select an answer --</option>
+        <option value="c">float compute(float x, y);</option>
+        <option value="a">int sum(int a, int b);</option>
+        <option value="b">void display();</option>
+        <option value="d">double multiply(double x, double y);</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q15:</b> Which keyword is used to define a variable whose value persists across multiple function calls?</p>
+    <label for="q15">Choose one:</label>
+    <select id="q15">
+        <option value="">-- Select an answer --</option>
+        <option value="b">static</option>
+        <option value="a">const</option>
+        <option value="c">volatile</option>
+        <option value="d">extern</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q16:</b> What will happen if you try to access a local variable outside its function?</p>
+    <label for="q16">Select the correct statement:</label>
+    <select id="q16">
+        <option value="">-- Select an answer --</option>
+        <option value="b">It will cause a compilation error.</option>
+        <option value="a">The variable is accessible anywhere in the program.</option>
+        <option value="c">The variable will hold its last value.</option>
+        <option value="d">It will cause a runtime error.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q17:</b> In the following prototype, which argument is passed by reference?<br>
+    <code>void func(int a, int &b, int *c);</code></p>
+    <label for="q17">Select the argument(s) passed by reference:</label>
+    <select id="q17">
+        <option value="">-- Select an answer --</option>
+        <option value="b">b only</option>
+        <option value="a">a only</option>
+        <option value="c">c only</option>
+        <option value="d">b and c</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q18:</b> What is true about pointers as function parameters?</p>
+    <label for="q18">Choose the correct statement:</label>
+    <select id="q18">
+        <option value="">-- Select an answer --</option>
+        <option value="a">Pointers allow functions to modify the argument’s value directly.</option>
+        <option value="b">Pointers are only used to read values, not modify them.</option>
+        <option value="c">Pointers cannot be passed as function parameters.</option>
+        <option value="d">Pointers make copies of variables inside functions.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q19:</b> Which of the following is true about static variables?</p>
+    <label for="q19">Select the correct statement:</label>
+    <select id="q19">
+        <option value="">-- Select an answer --</option>
+        <option value="b">Static variables retain their value between function calls.</option>
+        <option value="a">Static variables are initialized each time the function is called.</option>
+        <option value="c">Static variables cannot be used inside functions.</option>
+        <option value="d">Static variables are automatically global variables.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q20:</b> What is the scope of a global variable?</p>
+    <label for="q20">Choose one:</label>
+    <select id="q20">
+        <option value="">-- Select an answer --</option>
+        <option value="b">Accessible from any function in the program.</option>
+        <option value="a">Accessible only inside the function where declared.</option>
+        <option value="c">Accessible only in the file where declared.</option>
+        <option value="d">Not accessible anywhere.</option>
+    </select>
+</div>
+
+<!-- Questions 21 to 30 (Code-focused) -->
+
+<div class="question">
+    <p><b>Q21:</b> What will be the output of this code?</p>
+    <pre>
+void printNumber(int n) {
+    cout << n << endl;
+}
+
+int main() {
+    printNumber(7);
+    return 0;
+}
+    </pre>
+    <label for="q21">Select the output:</label>
+    <select id="q21">
+        <option value="">-- Select output --</option>
+        <option value="7">7</option>
+        <option value="0">0</option>
+        <option value="Compilation error">Compilation error</option>
+        <option value="Nothing">Nothing</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q22:</b> Which line correctly declares a function named <code>sum</code> that takes two <code>int</code> parameters and returns an <code>int</code>?</p>
+    <label for="q22">Select the correct declaration:</label>
+    <select id="q
+<div class="question">
+    <p><b>Q22:</b> Which line correctly declares a function named <code>sum</code> that takes two <code>int</code> parameters and returns an <code>int</code>?</p>
+    <label for="q22">Select the correct declaration:</label>
+    <select id="q22">
+        <option value="">-- Select an answer --</option>
+        <option value="a">int sum(int a, int b);</option>
+        <option value="b">void sum(int a, int b);</option>
+        <option value="c">int sum(int a);</option>
+        <option value="d">sum(int a, int b);</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q23:</b> What will be the output of this code?</p>
+    <pre>
+void swap(int &x, int &y) {
+    int temp = x;
+    x = y;
+    y = temp;
+}
+
+int main() {
+    int a = 5, b = 10;
+    swap(a, b);
+    cout << a << " " << b << endl;
+    return 0;
+}
+    </pre>
+    <label for="q23">Select the output:</label>
+    <select id="q23">
+        <option value="">-- Select output --</option>
+        <option value="a">5 10</option>
+        <option value="b">10 5</option>
+        <option value="c">Compilation error</option>
+        <option value="d">Runtime error</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q24:</b> What will happen when the function below is called multiple times?</p>
+    <pre>
+void counter() {
+    static int count = 0;
+    count++;
+    cout << count << endl;
+}
+    </pre>
+    <label for="q24">Select the output sequence if called 3 times:</label>
+    <select id="q24">
+        <option value="">-- Select an answer --</option>
+        <option value="a">1 1 1</option>
+        <option value="b">1 2 3</option>
+        <option value="c">0 0 0</option>
+        <option value="d">Compilation error</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q25:</b> Given the function prototype <code>void process(int *ptr);</code>, how do you call this function?</p>
+    <label for="q25">Select the correct call:</label>
+    <select id="q25">
+        <option value="">-- Select an answer --</option>
+        <option value="a">int x = 5; process(&x);</option>
+        <option value="b">int x = 5; process(x);</option>
+        <option value="c">int *x = 5; process(x);</option>
+        <option value="d">process();</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q26:</b> What is the scope of a variable declared inside a function?</p>
+    <label for="q26">Select one:</label>
+    <select id="q26">
+        <option value="">-- Select an answer --</option>
+        <option value="a">Local to that function only.</option>
+        <option value="b">Global to entire program.</option>
+        <option value="c">Accessible only in main function.</option>
+        <option value="d">Accessible in all included files.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q27:</b> Which statement correctly defines a default parameter value?</p>
+    <label for="q27">Select the correct function declaration:</label>
+    <select id="q27">
+        <option value="">-- Select an answer --</option>
+        <option value="a">void display(int x = 5);</option>
+        <option value="b">void display(int x);</option>
+        <option value="c">void display(int = 5);</option>
+        <option value="d">void display(int x = );</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q28:</b> What is true about function overloading?</p>
+    <label for="q28">Select one:</label>
+    <select id="q28">
+        <option value="">-- Select an answer --</option>
+        <option value="a">Functions with the same name but different parameter lists.</option>
+        <option value="b">Functions that are defined inside other functions.</option>
+        <option value="c">Functions with no return type.</option>
+        <option value="d">Functions that cannot accept parameters.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q29:</b> Which keyword is used to declare a pointer variable?</p>
+    <label for="q29">Select the correct keyword:</label>
+    <select id="q29">
+        <option value="">-- Select an answer --</option>
+        <option value="a">int*</option>
+        <option value="b">int&</option>
+        <option value="c">ref</option>
+        <option value="d">ptr</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q30:</b> What will this code print?</p>
+    <pre>
+void func(int &x) {
+    x = x + 10;
+}
+
+int main() {
+    int a = 5;
+    func(a);
+    cout << a << endl;
+    return 0;
+}
+    </pre>
+    <label for="q30">Select the output:</label>
+    <select id="q30">
+        <option value="">-- Select output --</option>
+        <option value="a">5</option>
+        <option value="b">15</option>
+        <option value="c">Compilation error</option>
+        <option value="d">Runtime error</option>
+    </select>
+</div>
+
+<script>
+function checkAnswers() {
+    const correctAnswers = {
+        q1: 'b',
+        q2: 'b',
+        q3: 'a',
+        q4: 'b',
+        q5: 'a',
+        q6: 'c',
+        q7: 'b',
+        q8: 'b',
+        q9: 'a',
+        q10: 'a',
+        q11: 'b',
+        q12: 'b',
+        q13: 'a',
+        q14: 'c',
+        q15: 'b',
+        q16: 'b',
+        q17: 'b',
+        q18: 'a',
+        q19: 'b',
+        q20: 'b',
+        q21: '7',
+        q22: 'a',
+        q23: 'b',
+        q24: 'b',
+        q25: 'a',
+        q26: 'a',
+        q27: 'a',
+        q28: 'a',
+        q29: 'a',
+        q30: 'b',
+    };
+
+    let score = 0;
+    let total = Object.keys(correctAnswers).length;
+
+    for (let key in correctAnswers) {
+        let el = document.getElementById(key);
+        if (!el) continue;
+        if (el.value === correctAnswers[key]) {
+            el.classList.remove('incorrect');
+            el.classList.add('correct');
+            score++;
+        } else {
+            el.classList.remove('correct');
+            el.classList.add('incorrect');
+        }
+    }
+
+    document.getElementById('result').innerText = `Your score: ${score} / ${total}`;
+}
+</script>
+
+<button onclick="checkAnswers()">Check Answers</button>
+<div id="result"></div>

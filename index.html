@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الصفحة الرئيسية - مقدمة إلى البرمجة بلغة C++</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent1:#00ffff;
+  --accent2:#00aaff;
+  --dark-bg:#0b0b0b;
+  --text:#f0f0f0;
+  --muted:#9e9e9e;
+  --card-radius:20px;
+}
+
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Noto Sans Arabic', Tahoma, Arial, sans-serif;
+  background:#0b0b0b;
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+  position: relative;
+  padding:20px;
+}
+
+/* Background Gradient Dynamic */
+body::before{
+  content:"";
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: linear-gradient(220deg,#001f3f,#004d66,#001f3f);
+  background-size:400% 400%;
+  z-index:-3;
+  animation: gradientBG 30s ease infinite;
+  filter: brightness(0.35);
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Canvas Matrix */
+canvas#matrix{
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  z-index:-2;
+  opacity:0.17;
+}
+
+/* Particles Overlay */
+#particles-js{
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  z-index:-1;
+  pointer-events:none;
+  opacity:0.3;
+}
+
+.container{max-width:980px;margin:auto;position:relative;z-index:1;}
+
+/* Navbar */
+nav{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:30px;
+  flex-wrap:wrap;
+}
+nav a{
+  text-decoration:none;
+  color:var(--accent1);
+  font-weight:700;
+  padding:10px 18px;
+  border-radius:15px;
+  transition:0.3s;
+  background: rgba(30,30,30,0.85);
+}
+nav a:hover{
+  background: var(--accent2);
+  color:#fff;
+}
+
+/* Header */
+header{
+  text-align:center;
+  padding:60px 20px;
+  background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  border-radius: var(--card-radius);
+  box-shadow:0 15px 45px rgba(0,0,0,0.6);
+  color:#fff;
+}
+header h1{
+  font-size:3rem; 
+  text-shadow:2px 2px 15px rgba(0,0,0,0.6);
+  background: linear-gradient(90deg, #000000, #222222, #444444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+@keyframes textGlow{
+  0%{text-shadow: 0 0 10px #111111, 0 0 15px #222222;}
+  50%{text-shadow: 0 0 20px #111111, 0 0 25px #222222, 0 0 30px #444444;}
+  100%{text-shadow: 0 0 15px #111111, 0 0 20px #222222, 0 0 25px #444444;}
+}
+header p{font-size:1.3rem; margin-top:12px;}
+
+/* Cards */
+.card{
+  margin-top:25px;
+  padding:30px;
+  border-radius: var(--card-radius);
+  backdrop-filter: blur(12px);
+  background: rgba(30,30,30,0.85);
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(0,255,255,0.4);
+}
+h2{
+  color:var(--accent1);
+  margin-bottom:15px;
+  text-shadow:1px 1px 8px rgba(0,0,0,0.5);
+  font-size:1.8rem;
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+a.btn{
+  display:inline-block;
+  padding:14px 24px;
+  border-radius:18px;
+  text-decoration:none;
+  background: linear-gradient(120deg,var(--accent1),var(--accent2));
+  color:#fff;
+  font-weight:700;
+  margin:8px 6px;
+  transition:0.3s all;
+}
+a.btn:hover{
+  transform:scale(1.1); 
+  box-shadow:0 15px 40px rgba(0,255,200,0.6);
+}
+
+/* Steps */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:15px;
+}
+.step{
+  padding:22px;
+  border-radius:18px;
+  background: linear-gradient(180deg,#111,#222);
+  border:1px solid rgba(255,255,255,0.05);
+  text-align:center;
+  transition:0.4s transform,0.4s box-shadow;
+}
+.step:hover{transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,255,200,0.5);}
+.step strong{display:block; font-size:1.5rem; margin-bottom:10px; color: var(--accent2);}
+.muted{color:var(--muted); font-size:1.05rem;}
+
+/* Checklist */
+ul.check{list-style:none; margin-top:12px;}
+ul.check li::before{content:"✅ ";}
+
+/* PDF */
+iframe.pdf-viewer{
+  width:100%;
+  height:750px;
+  border-radius:18px;
+  margin-top:15px;
+  border:2px solid var(--accent1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+iframe.pdf-viewer:hover{transform:scale(1.03); box-shadow:0 20px 60px rgba(0,255,200,0.5);}
+
+/* Images */
+.card img{
+  max-width:100%;
+  border-radius:18px;
+  margin:15px 0;
+  box-shadow:0 20px 60px rgba(0,255,200,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card img:hover{transform:scale(1.04);}
+
+/* Social */
+.social a{margin:0 14px;color: var(--accent1); text-decoration:none;font-weight:700;transition:0.3s;}
+.social a:hover{color: var(--accent2);}
+.whatsapp-btn{
+  display:inline-block;
+  background:#25D366;
+  color:#fff;
+  padding:14px 24px;
+  border-radius:18px;
+  text-decoration:none;
+  font-weight:700;
+  margin-top:15px;
+  transition:0.3s transform,0.3s background;
+}
+.whatsapp-btn:hover{background:#1DA851; transform:scale(1.08);}
+
+/* Footer */
+footer{text-align:center;margin-top:50px;color:var(--muted);font-size:0.9rem;}
+/* Scrollbar */
+::-webkit-scrollbar{width:12px;}
+::-webkit-scrollbar-thumb{background:var(--accent2); border-radius:6px;}
+::-webkit-scrollbar-track{background:#111; border-radius:6px;}
+
+@media(max-width:520px){
+  header h1{font-size:2.2rem;}
+  header p{font-size:1rem;}
+  .steps{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- Canvas Matrix -->
+<canvas id="matrix"></canvas>
+<!-- Particles Overlay -->
+<div id="particles-js"></div>
+
+<div class="container">
+
+<!-- Navbar -->
+<nav>
+  <a href="index.html">🏠 الرئيسية</a>
+  <a href="study.html">📘 طريقة الدراسة</a>
+  <a href="videos.html">📗 حصص</a>
+  <a href="مصادر الدراسة .html">مصادر الدراسة</a>
+   <a href="contact.html">📱تواصل معي </a>
+    <a href ="مسابقات.html">مسابقات المجموعة</a>
+
+  
+</nav>
+
+<header>
+  <h1>مقدمة إلى البرمجة بلغة C++</h1>
+  <p>دليلك الكامل للبداية الصحيحة في المادة 💪</p>
+</header>
+
+<section class="card">
+  <h2>📘 مقدمة عن لغة C++</h2>
+  <p>لغة <strong>C++</strong> لغة ++C هي لغة برمجة قوية ومتعددة الاستخدامات تُستخدم لتطوير مجموعة واسعة من التطبيقات، بما في ذلك الألعاب، وأنظمة التشغيل، والذكاء الاصطناعي. وهي امتداد للغة C، مما يعني أنها تجمع بين مميزات لغتي C و C++، وتسمح بالتحكم الدقيق في موارد النظام والذاكرة، وهي سريعة وفعالة. الهدف من تعلم هذه المادة هو فهم منطق البرمجة وتحويل الأفكار إلى أوامر يفهمها الكمبيوتر. 
+لغة C++ وأهميتها
+متعددة الاستخدامات: تُستخدم في مجالات متنوعة تتراوح بين الألعاب المعقدة، وبرامج النظام، والتطبيقات الشاملة مثل متصفحات الإنترنت وسكايب. 
+أداء عالٍ: تشتهر بالكفاءة والسرعة، مما يجعلها مناسبة لتطوير تطبيقات عالية الأداء تتطلب معالجة سريعة واستخداماً مكثفاً للذاكرة. 
+لغة كائنية التوجه: تدعم البرمجة كائنية التوجه (Object-Oriented Programming)، مما يوفر هيكلاً منظماً وقابلاً لإعادة الاستخدام للكود. 
+تحكم في الذاكرة: تتيح للمطورين التحكم بشكل دقيق في إدارة الذاكرة، وهو أمر ضروري للتطبيقات التي تتطلب تحسيناً للأداء. 
+قوية ومرنة: هي لغة ذات مستوى قريب من لغة الآلة، مما يمنحها قوة ومرونة عاليتين. 
+لماذا يجب عليك أن تفهم الكود بدلاً من حفظه
+فهم الأفكار: الهدف هو تعلم منطق البرمجة، وهو كيفية تحويل فكرتك إلى أوامر يفهمها الكمبيوتر. الفهم يسمح لك بإيجاد حلول للمشاكل المختلفة.
+تجنب الأخطاء: حفظ الكود لا يعلمك كيفية تصحيح الأخطاء. الفهم الجيد للأساسيات يساعدك على اكتشاف الأخطاء وتصحيحها بنفسك.
+الإبداع والابتكار: الفهم العميق للبرمجة يمنحك المرونة لتطوير حلولك الخاصة وإبداع أشياء جديدة بدلًا من مجرد نسخ الأكواد الجاهزة. </p>
+  <p>هدف المادة: تعلم <strong>منطق البرمجة</strong> وتحويل أفكارك لأوامر يفهمها الكمبيوتر. لا تحفظ الأكواد، افهمها! 😉</p>
+</section>
+
+<section class="card">
+  <h2>🔗 روابط مهمة</h2>
+  <a class="btn" href="https://drive.google.com/drive/folders/1EDPaKXCZpCkdUiIBzxCwR3IOjT6Vki4Y?usp=sharing" target="_blank">📂 Google Drive</a>
+  <a class="btn" href="https://youtube.com/@start-coding-with-mohammad?si=8RnrdtIYraaQqvVZ" target="_blank">▶️ قناة اليوتيوب</a>
+  <a class="btn" href="https://github.com/MohammadAzmiHamdan12/Quizzes-cpp" target="_blank">🧠 كويزات تفاعلية – GitHub</a>
+  <a class="btn" href="https://mohammadazmihamdan.github.io/cpp-html-demo/" target="_blank">🌐 الصفحة الرسمية</a>
+  <a class="btn" href="https://nonerdsapp.com/course?id=49" target="_blank">🎓 بطاقة C++ التعليمية</a>
+  <a class="btn" href="https://chat.whatsapp.com/CaHQT1ooPCRBKv4LR0NhEr" target="_blank">💬 مجموعة واتساب</a>
+</section>
+
+<section class="card">
+  <h2>📅 المهمة الزمنية</h2>
+  <p>حاولوا تخلصوا اول وحدتين خلال <strong>اسبوع زمن</strong>. اعطي نفسك أسبوع لتنجز 80–90% منهم.</p>
+  <div class="steps">
+    <div class="step"><strong>1</strong><p class="muted">شاهد الحصة، حل الأمثلة، اربط كل شيء بشرح الحصة.</p></div>
+    <div class="step"><strong>2</strong><p class="muted">راجع بالدوسية بعد حصص البطاقة لتثبيت الفهم.</p></div>
+    <div class="step"><strong>3</strong><p class="muted">جرّب الكود بنفسك على الكمبيوتر — الغلطات بتعلمك.</p></div>
+    <div class="step"><strong>4</strong><p class="muted">حل تمارين إضافية واستمر بالمراجعة.</p></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>💡 نصائح عامة</h2>
+  <div class="steps">
+    <div class="step"><strong>1</strong><p class="muted">ابدأ بالشرح الأساسي قبل الانتقال للتمارين الصعبة.</p></div>
+    <div class="step"><strong>2</strong><p class="muted">الغلط جزء من التعلم، لا تخاف تغلط بالكود.</p></div>
+    <div class="step"><strong>3</strong><p class="muted">شارك أسئلتك بالنقاشات — الكل بيتعلم من بعض.</p></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>📝 اراء الطلاب في الفصول السابقة</h2>
+  <iframe class="pdf-viewer" src="صيفي%202025.pdf"></iframe>
+  <p style="margin-top:12px;"><a href="صيفي%202025.pdf" target="_blank" style="color:var(--accent1);font-weight:700;">اضغط هنا لتحميل الملف</a></p>
+</section>
+
+<section class="card">
+  <h2>🎓 بطاقة C++ التعليمية</h2>
+  <img src="Screenshot 2025-10-09 014751.png" alt="بطاقتي التعليمية">
+  <p>أقوى بطاقة تعليمية لمادة C++ – شرح شامل، مراجعات، وكويزات.</p>
+  <a href="https://wa.me/962788592929" target="_blank" class="btn">اطلب البطاقة الآن</a>
+</section>
+
+<section class="card">
+  <h2>📱 تواصل ودعم</h2>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/mohammad-hamdan-0b7b6b30a" target="_blank">LinkedIn</a>
+    <a href="https://github.com/MohammadAzmiHamdan" target="_blank">GitHub</a>
+  </div>
+  <p style="margin-top:10px;">يا ريت كل واحد عنده LinkedIn أو GitHub أو أي بورتفوليو يشارك الروابط على جروب المادة، لنتابع بعض وندعم بعض</p>
+</section>
+
+<footer>
+  © 2025 Start Coding With Mohammad | محمد عزمي حمدان  
+  <div class="social">
+    🔗 <a href="https://www.linkedin.com/in/mohammad-hamdan-0b7b6b30a" target="_blank">LinkedIn</a> | 
+    🐙 <a href="https://github.com/MohammadAzmiHamdan" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+</div>
+
+<!-- Matrix Script -->
+<script>
+const canvas=document.getElementById('matrix');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+const letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
+const fontSize=16;
+const columns=canvas.width/fontSize;
+const drops=[];for(let x=0;x<columns;x++)drops[x]=Math.random()*canvas.height;
+function drawMatrix(){
+  ctx.fillStyle='rgba(0,0,0,0.05)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='rgba(0,255,255,0.15)';
+  ctx.font=fontSize+'px monospace';
+  for(let i=0;i<drops.length;i++){
+    const text=letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+    if(drops[i]*fontSize>canvas.height && Math.random()>0.975)drops[i]=0;
+    drops[i]++;
+  }
+}
+setInterval(drawMatrix,35);
+</script>
+
+</body>
+</html>

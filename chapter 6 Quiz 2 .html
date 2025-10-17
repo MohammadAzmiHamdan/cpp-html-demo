@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Functions Quiz</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 700px;
+        margin: auto;
+    }
+    .question {
+        background: #f9f9f9;
+        padding: 15px;
+        margin-bottom: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px #ddd;
+    }
+    select {
+        padding: 6px;
+        margin: 10px 0 0 0;
+        width: 100%;
+        max-width: 500px;
+    }
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+    }
+    .correct {
+        background-color: #c8f7c5;
+    }
+    .incorrect {
+        background-color: #f7c5c5;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border: none;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .result {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 30px;
+        padding: 15px;
+        border-radius: 6px;
+        background-color: #e0e0e0;
+        max-width: 400px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Functions Quiz</h1>
+<p>Answer the following questions by selecting the correct option for each.</p>
+
+<div class="question">
+    <p><b>Q1:</b> Which of the following is a valid function declaration with default arguments in C++?</p>
+    <select id="q1">
+        <option value="">-- Select the correct declaration --</option>
+        <option value="a">void func(int a = 5, int b);</option>
+        <option value="b">void func(int a, int b = 10);</option>
+        <option value="c">void func(int a = 5, int b = 10);</option>
+        <option value="d">void func(int a, int b);</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q2:</b> What is the output of the following code?</p>
+    <pre>
+void changeValue(int &x) {
+    x = 10;
+}
+
+int main() {
+    int num = 5;
+    changeValue(num);
+    cout << num << endl;
+    return 0;
+}
+    </pre>
+    <label for="q2">Select the output:</label>
+    <select id="q2">
+        <option value="">-- Select output --</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="Compilation error">Compilation error</option>
+        <option value="Undefined behavior">Undefined behavior</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q3:</b> Which statement about function overloading is <u>correct</u>?</p>
+    <select id="q3">
+        <option value="">-- Select one --</option>
+        <option value="a">Two functions can be overloaded if they differ only in their return type.</option>
+        <option value="b">Two functions can be overloaded if they differ in the number or types of parameters.</option>
+        <option value="c">Function overloading is not supported in C++.</option>
+        <option value="d">Overloaded functions must have different names.</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q4:</b> Consider the function call <code>processData(5, 10);</code>. Which function signature will match best?</p>
+    <pre>
+void processData(int a, int b);
+void processData(int &a, int b);
+void processData(int a, int &b);
+void processData(int &a, int &b);
+    </pre>
+    <select id="q4">
+        <option value="">-- Select the matching signature --</option>
+        <option value="1">void processData(int a, int b);</option>
+        <option value="2">void processData(int &a, int b);</option>
+        <option value="3">void processData(int a, int &b);</option>
+        <option value="4">void processData(int &a, int &b);</option>
+    </select>
+</div>
+
+<div class="question">
+    <p><b>Q5:</b> What happens if you declare two functions with the exact same signature?</p>
+    <select id="q5">
+        <option value="">-- Select the correct answer --</option>
+        <option value="a">The compiler treats them as overloaded functions.</option>
+        <option value="b">The compiler throws a compilation error due to redefinition.</option>
+        <option value="c">The second function overrides the first silently.</option>
+        <option value="d">Only the last defined function is used at runtime.</option>
+    </select>
+</div>
+
+<button onclick="checkQuiz()">Check Answers</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function checkQuiz() {
+    const answers = {
+        q1: "c",
+        q2: "10",
+        q3: "b",
+        q4: "1",
+        q5: "b"
+    };
+
+    let score = 0;
+    const total = Object.keys(answers).length;
+
+    for (const key in answers) {
+        let el = document.getElementById(key);
+        if(!el) continue;
+        if(el.value === answers[key]) {
+            el.classList.remove("incorrect");
+            el.classList.add("correct");
+            score++;
+        } else {
+            el.classList.remove("correct");
+            el.classList.add("incorrect");
+        }
+    }
+
+    document.getElementById("result").innerText = `Your score: ${score} / ${total}`;
+}
+</script>
+
+</body>
+</html>
